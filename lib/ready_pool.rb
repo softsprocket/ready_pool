@@ -63,6 +63,7 @@ class ReadyPool
 	# starts the thread
 	#
 	# @param data [Object] data passed to the thread Proc
+	# @return [Thread]
 	################################################################
 	def start data
 		th = nil
@@ -83,7 +84,8 @@ class ReadyPool
 		end
 
 		th[:data] = data
-		signal_thread th	
+		signal_thread th
+		return th[:thread]
 	end
 
 	################################################################

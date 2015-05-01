@@ -200,7 +200,7 @@ thread completes its task it returns itself to the pool.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#start-instance_method" title="#start (instance method)">- (Object) <strong>start</strong>(data) </a>
+      <a href="#start-instance_method" title="#start (instance method)">- (Thread) <strong>start</strong>(data) </a>
     
 
     
@@ -371,15 +371,15 @@ thread completes its task it returns itself to the pool.</p>
       <pre class="lines">
 
 
-92
-93
 94
 95
 96
-97</pre>
+97
+98
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ready_pool.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/ready_pool.rb', line 94</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_kill_all'>kill_all</span>
 	<span class='ivar'>@pool</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_th'>th</span><span class='op'>|</span>
@@ -395,7 +395,7 @@ thread completes its task it returns itself to the pool.</p>
       <div class="method_details ">
   <h3 class="signature " id="start-instance_method">
   
-    - (<tt>Object</tt>) <strong>start</strong>(data) 
+    - (<tt>Thread</tt>) <strong>start</strong>(data) 
   
 
   
@@ -431,6 +431,19 @@ thread completes its task it returns itself to the pool.</p>
   
 </ul>
 
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Thread</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -438,7 +451,6 @@ thread completes its task it returns itself to the pool.</p>
       <pre class="lines">
 
 
-67
 68
 69
 70
@@ -458,10 +470,12 @@ thread completes its task it returns itself to the pool.</p>
 84
 85
 86
-87</pre>
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ready_pool.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/ready_pool.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_start'>start</span> <span class='id identifier rubyid_data'>data</span>
 	<span class='id identifier rubyid_th'>th</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -482,7 +496,8 @@ thread completes its task it returns itself to the pool.</p>
 	<span class='kw'>end</span>
 
 	<span class='id identifier rubyid_th'>th</span><span class='lbracket'>[</span><span class='symbol'>:data</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_data'>data</span>
-	<span class='id identifier rubyid_signal_thread'>signal_thread</span> <span class='id identifier rubyid_th'>th</span>	
+	<span class='id identifier rubyid_signal_thread'>signal_thread</span> <span class='id identifier rubyid_th'>th</span>
+	<span class='kw'>return</span> <span class='id identifier rubyid_th'>th</span><span class='lbracket'>[</span><span class='symbol'>:thread</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -494,7 +509,7 @@ thread completes its task it returns itself to the pool.</p>
 </div>
 
     <div id="footer">
-  Generated on Mon Apr 27 11:15:23 2015 by
+  Generated on Fri May  1 09:30:42 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>
